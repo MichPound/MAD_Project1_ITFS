@@ -1,0 +1,26 @@
+[
+  {
+    "id": 0,
+    "title": "Uisce Beatha",
+    "county": "Waterford",
+    "desc": "Best Pub",
+    "lat": 52.26,
+    "long": -7.12,
+    "contactInfo": "12345679",
+    "openTime": 15.0,
+    "closingTime": 23.0,
+    "ticket": true
+  },
+  {
+    "id": 1906064613455140352,
+    "title": "2",
+    "county": "2",
+    "desc": "2",
+    "lat": 2.0,
+    "long": 2.0,
+    "contactInfo": "2",
+    "openTime": 2.0,
+    "closingTime": 2.0,
+    "ticket": false
+  }
+]

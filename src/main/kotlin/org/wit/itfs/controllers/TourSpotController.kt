@@ -24,7 +24,6 @@ class TourSpotController {
                 4 -> deleteTourSpot()
                 5 -> getWeather()
                 -0 -> println("Exiting App")
-                99 -> temp()
                 else -> println("Invalid Option")
             }
             println()
@@ -122,6 +121,8 @@ class TourSpotController {
         val update = TourSpotModel()
 
         if (spot != null) {
+            update.id = spot.id
+
             print("Enter a new Title for (${spot.title}) : ")
             val tempTitle = readLine()!!
             if (tempTitle.isNotEmpty()) {
@@ -202,10 +203,10 @@ class TourSpotController {
                 println("Tourist Spot optional closing time not updated")
             }
 
-            print("Update whether ticket needed (${spot.ticket}) : ")
+            print("Update whether ticket needed (${spot.ticket}), T/F: ")
             val tempTicket = readLine()!!
             if (tempTicket.isNotEmpty()) {
-                update.ticket = tempTicket.toBoolean()
+                update.ticket = tempTicket == "T" || tempTicket == "t"
                 println("Tourist Spot ticket updated")
             } else {
                 update.ticket = spot.ticket
@@ -246,7 +247,7 @@ class TourSpotController {
     private fun selectSpot(): TourSpotModel? {
         listTourSpots()
         return if (tourSpots.amount() != 0) {
-            print("\nEnter id of Tourist Spot: ")
+            print("\nEnter Title of Tourist Spot: ")
             val index = readLine()!!
             tourSpots.find(index.toLong())
         } else {
@@ -280,60 +281,5 @@ class TourSpotController {
         } else {
             println("Tourist Spot not found...")
         }
-    }
-
-    private fun temp() {
-        tourSpots.add(
-            TourSpotModel(
-                title = "Uisce0",
-                county = "Waterford",
-                desc = "Best Pub Ever",
-                lat = 52.26,
-                long = -7.12,
-                contactInfo = "N/A",
-                openTime = 0.0,
-                closingTime = 0.0,
-                ticket = false
-            )
-        )
-        tourSpots.add(
-            TourSpotModel(
-                title = "Uisce1",
-                county = "Waterford",
-                desc = "Best Pub Ever",
-                lat = 52.26,
-                long = -7.12,
-                contactInfo = "N/A",
-                openTime = 0.0,
-                closingTime = 0.0,
-                ticket = false
-            )
-        )
-        tourSpots.add(
-            TourSpotModel(
-                title = "Uisce2",
-                county = "Waterford",
-                desc = "Best Pub Ever",
-                lat = 52.26,
-                long = -7.12,
-                contactInfo = "N/A",
-                openTime = 0.0,
-                closingTime = 0.0,
-                ticket = false
-            )
-        )
-        tourSpots.add(
-            TourSpotModel(
-                title = "Uisce3",
-                county = "Waterford",
-                desc = "Best Pub Ever",
-                lat = 52.26,
-                long = -7.12,
-                contactInfo = "N/A",
-                openTime = 0.0,
-                closingTime = 0.0,
-                ticket = false
-            )
-        )
     }
 }
