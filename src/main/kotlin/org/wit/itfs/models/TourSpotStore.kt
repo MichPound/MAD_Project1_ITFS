@@ -6,5 +6,6 @@ interface TourSpotStore {
     fun update(tourSpot: TourSpotModel)
     fun delete(tourSpot: TourSpotModel)
     fun find(index: Long): TourSpotModel?
+    fun findByTitle(name: String): TourSpotModel?
     fun amount(): Int
 }
