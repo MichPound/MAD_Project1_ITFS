@@ -16,7 +16,10 @@ dependencies {
     testImplementation 'org.junit.jupiter:junit-jupiter-api:5.7.0'
     testRuntimeOnly 'org.junit.jupiter:junit-jupiter-engine:5.7.0'
     implementation "com.google.code.gson:gson:2.8.5"
+    implementation 'com.fasterxml.jackson.dataformat:jackson-dataformat-xml:2.10.1'
 }
+
+
 
 test {
     useJUnitPlatform()

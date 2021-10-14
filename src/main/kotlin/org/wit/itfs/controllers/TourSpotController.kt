@@ -1,15 +1,13 @@
 package org.wit.itfs.controllers
 
-import APIKEY
-import com.google.gson.Gson
-import com.google.gson.GsonBuilder
 import org.wit.itfs.models.TourSpotMemStore
 import org.wit.itfs.models.TourSpotModel
-import java.net.URL
+import org.wit.itfs.models.WeatherMemStore
 
 class TourSpotController {
 
     private val tourSpots = TourSpotMemStore()
+    private val weather = WeatherMemStore()
 
     fun start() {
 
@@ -22,7 +20,8 @@ class TourSpotController {
                 2 -> listTourSpots()
                 3 -> updateTourSpot()
                 4 -> deleteTourSpot()
-                5 -> getWeather()
+                5 -> getGeneralWeather()
+                6 -> getFullWeather()
                 -0 -> println("Exiting App")
                 else -> println("Invalid Option")
             }
@@ -39,7 +38,8 @@ class TourSpotController {
         println(" 2. List Tourist Spots")
         println(" 3. Update Tourist Spot")
         println(" 4. Delete Tourist Spot")
-        println(" 5. Retrieve Tourist Spots Weather")
+        println(" 5. General Weather")
+        println(" 6. Full Weather")
         println(" -0. Exit")
         println()
         print("Enter your option : ")
@@ -255,29 +255,44 @@ class TourSpotController {
         }
     }
 
-    private fun getWeather() {
+    private fun getFullWeather() {
         val spot = selectSpot()
 
         if (spot != null) {
+            val currentWeather = weather.getWeather(spot)
 
-            val lat = spot.lat
-            val long = spot.long
-            val apikey = APIKEY
+            println("Status: ${currentWeather.weather[0].main}")
+            println("Description: ${currentWeather.weather[0].description}")
+            println("Temperature: ${(currentWeather.main.temp - 273.15).toInt()}")
+            println("Feels Like: ${(currentWeather.main.feels_like - 273.15).toInt()}")
+            println("Temperature Low: ${(currentWeather.main.temp_min - 273.15).toInt()}")
+            println("Temperature High: ${(currentWeather.main.temp_max - 273.15).toInt()}")
+            println("Pressure: ${currentWeather.main.pressure}")
+            println("Humidity: ${currentWeather.main.humidity}")
+            println("Wind Speed: ${currentWeather.wind.speed}")
+            println("Wind Direction: ${currentWeather.wind.deg}")
+            println("Wind Gusts: ${currentWeather.wind.gust}")
+            println("Visibility: ${currentWeather.visibility}")
+            println("Cloud Percentage: ${currentWeather.clouds.all}")
+            println("Sunrise: ${currentWeather.sys.sunrise}")
+            println("Sunset: ${currentWeather.sys.sunset}")
 
-            var weather = ""
-            try {
-                weather = URL("https://api.openweathermap.org/data/2.5/weather?lat=$lat&lon=$long&appid=$apikey")
-                    .readText(Charsets.UTF_8)
-            } catch (e: Exception) {
-                println(e)
-            }
+        } else {
+            println("Tourist Spot not found...")
+        }
+    }
 
-            val gson: Gson = GsonBuilder().setPrettyPrinting().create()
+    private fun getGeneralWeather() {
+        val spot = selectSpot()
 
-            val output: String = gson.toJson(weather)
+        if (spot != null) {
+            val currentWeather = weather.getWeather(spot)
 
-            println("\nWeather: ")
-            println(output)
+            println("Status: ${currentWeather.weather[0].main}")
+            println("Description: ${currentWeather.weather[0].description}")
+            println("Temperature: ${(currentWeather.main.temp - 273.15).toInt()}")
+            println("Feels Like: ${(currentWeather.main.feels_like - 273.15).toInt()}")
+
         } else {
             println("Tourist Spot not found...")
         }
