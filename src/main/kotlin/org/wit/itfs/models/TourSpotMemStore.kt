@@ -32,7 +32,11 @@ class TourSpotMemStore : TourSpotStore {
     }
 
     override fun list() {
-        tourSpots.forEach { println("$it") }
+        tourSpots.forEach {
+            println("ID: ${it.id}, Title: ${it.title}, County: ${it.county}, Description: ${it.desc}, " +
+                    "Latitude: ${it.lat}, Longitude: ${it.long}, Contact info: ${it.contactInfo}, " +
+                    "Open Time: ${it.openTime}, Closing Time: ${it.closingTime}, Ticket:  ${it.ticket}")
+        }
     }
 
     override fun update(updatedTourSpot: TourSpotModel) {
@@ -62,7 +66,7 @@ class TourSpotMemStore : TourSpotStore {
     }
 
     override fun findByTitle(title: String): TourSpotModel? {
-        return tourSpots.find { p -> (p.title.lowercase()).contains(title.lowercase())}
+        return tourSpots.find { p -> (p.title.lowercase()).contains(title.lowercase()) }
     }
 
     override fun amount(): Int {
@@ -85,9 +89,60 @@ class TourSpotMemStore : TourSpotStore {
                 ) {
                     searchedList.add(spot)
                 }
-            } catch (e: Exception){ }
+            } catch (e: Exception) {
+            }
         }
         return searchedList
+    }
+
+    override fun countyFilter() {
+        val counties = ArrayList<String>()
+        tourSpots.forEach {
+            if (!counties.contains("O. ${it.county.lowercase()}")) counties.add("O. ${it.county.lowercase()}")
+        }
+
+        var tempCounty: String
+        do {
+            counties.forEach {
+                print("    $it")
+            }
+
+            println()
+            println()
+
+            val filteredList = ArrayList<TourSpotModel>()
+
+            for (i in 0 until counties.size){
+                if (counties[i].startsWith("O")) {
+                    tourSpots.forEach { spot ->
+                        if ((spot.county.lowercase()).contains(counties[i].drop(3).lowercase())) {
+                            filteredList.add(spot)
+                        }
+                    }
+                }
+            }
+            filteredList.forEach {
+                println("ID: ${it.id}, Title: ${it.title}, County: ${it.county}, Description: ${it.desc}, " +
+                        "Latitude: ${it.lat}, Longitude: ${it.long}, Contact info: ${it.contactInfo}, " +
+                        "Open Time: ${it.openTime}, Closing Time: ${it.closingTime}, Ticket:  ${it.ticket}")
+            }
+
+            println()
+
+            println("-1 to Exit")
+            println("Enter name of county to add/remove from filtered list: ")
+            tempCounty = readLine()!!
+
+            for (i in 0 until counties.size){
+                if (counties[i].drop(3).lowercase() == (tempCounty.lowercase())) {
+                    if (counties[i].startsWith("O")) {
+                        counties[i] = "X${counties[i].drop(1)}"
+                    } else {
+                        counties[i] = "O${counties[i].drop(1)}"
+                    }
+                }
+            }
+        } while (tempCounty != "-1")
     }
 
     private fun save() {
