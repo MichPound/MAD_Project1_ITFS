@@ -3,16 +3,64 @@
     "id": 0,
     "title": "Uisce Beatha",
     "county": "Waterford",
-    "desc": "Best Pub",
+    "desc": "Waterford",
     "lat": 52.26,
     "long": -7.12,
+    "contactInfo": "12345679",
+    "openTime": 15.0,
+    "closingTime": 23.0,
+    "ticket": false
+  },
+  {
+    "id": 1906064613455140353,
+    "title": "Random Spot",
+    "county": "Kerry",
+    "desc": "Kerry",
+    "lat": 53.26,
+    "long": -2.12,
+    "contactInfo": "12345679",
+    "openTime": 15.0,
+    "closingTime": 23.0,
+    "ticket": false
+  },
+  {
+    "id": 1613490606455140352,
+    "title": "Home Sweet Home",
+    "county": "Cork",
+    "desc": "West of the place",
+    "lat": 51.65,
+    "long": -9.26,
     "contactInfo": "12345679",
     "openTime": 15.0,
     "closingTime": 23.0,
     "ticket": true
   },
   {
-    "id": 1906064613455140352,
+    "id": -791070776556359711,
+    "title": "Kilkenny Castle",
+    "county": "Kilkenny",
+    "desc": "Castle with beautiful rose garden.\t",
+    "lat": 52.65,
+    "long": 7.24,
+    "contactInfo": "0567704100",
+    "openTime": 9.0,
+    "closingTime": 5.3,
+    "ticket": false
+  },
+  {
+    "id": 911357547253194087,
+    "title": "Title",
+    "county": "county",
+    "desc": "desc",
+    "lat": 12.0,
+    "long": 21.0,
+    "contactInfo": "123456789",
+    "openTime": 12.0,
+    "closingTime": 12.0,
+    "ticket": true
+  },
+  {
+    "id": 655494938819789974,
     "title": "2",
     "county": "2",
     "desc": "2",
@@ -21,6 +69,6 @@
     "contactInfo": "2",
     "openTime": 2.0,
     "closingTime": 2.0,
-    "ticket": false
+    "ticket": true
   }
 ]
