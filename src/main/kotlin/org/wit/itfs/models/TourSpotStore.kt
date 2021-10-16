@@ -8,4 +8,5 @@ interface TourSpotStore {
     fun find(index: Long): TourSpotModel?
     fun findByTitle(name: String): TourSpotModel?
     fun amount(): Int
+    fun search(search: String): List<TourSpotModel>
 }
