@@ -69,6 +69,27 @@ class TourSpotMemStore : TourSpotStore {
         return tourSpots.size
     }
 
+    override fun search(search: String): List<TourSpotModel> {
+        val searchedList = ArrayList<TourSpotModel>()
+        tourSpots.forEach { spot ->
+            try {
+                if (
+                    (spot.title.lowercase()).contains(search.lowercase()) ||
+                    (spot.county.lowercase()).contains(search.lowercase()) ||
+                    (spot.desc.lowercase()).contains(search.lowercase()) ||
+                    (spot.contactInfo.lowercase()).contains(search.lowercase()) ||
+                    (spot.lat == search.toDouble()) ||
+                    (spot.long == search.toDouble()) ||
+                    (spot.openTime == search.toDouble()) ||
+                    (spot.closingTime == search.toDouble())
+                ) {
+                    searchedList.add(spot)
+                }
+            } catch (e: Exception){ }
+        }
+        return searchedList
+    }
+
     private fun save() {
         val jsonString = gsonBuilder.toJson(tourSpots, listType)
         writeFile(jsonFile, jsonString)

@@ -22,6 +22,7 @@ class TourSpotController {
                 4 -> deleteTourSpot()
                 5 -> getGeneralWeather()
                 6 -> getFullWeather()
+                7 -> search()
                 -0 -> println("Exiting App")
                 else -> println("Invalid Option")
             }
@@ -40,6 +41,7 @@ class TourSpotController {
         println(" 4. Delete Tourist Spot")
         println(" 5. General Weather")
         println(" 6. Full Weather")
+        println(" 7. Search")
         println(" -0. Exit")
         println()
         print("Enter your option : ")
@@ -296,5 +298,12 @@ class TourSpotController {
         } else {
             println("Tourist Spot not found...")
         }
+    }
+
+    private fun search() {
+        print("Search by: ")
+        val search = readLine()!!
+        val list: List<TourSpotModel> = tourSpots.search(search)
+        if (list.isNotEmpty()) list.forEach { println("$it") }
     }
 }

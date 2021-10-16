@@ -22,5 +22,17 @@
     "openTime": 2.0,
     "closingTime": 2.0,
     "ticket": false
+  },
+  {
+    "id": -4197875126974084265,
+    "title": "Tramore Beach",
+    "county": "Waterford",
+    "desc": "A very rocky beach",
+    "lat": 52.16,
+    "long": -7.12,
+    "contactInfo": "N/A",
+    "openTime": 0.0,
+    "closingTime": 0.0,
+    "ticket": false
   }
 ]
