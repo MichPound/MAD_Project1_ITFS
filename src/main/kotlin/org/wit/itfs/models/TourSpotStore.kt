@@ -9,4 +9,5 @@ interface TourSpotStore {
     fun findByTitle(name: String): TourSpotModel?
     fun amount(): Int
     fun search(search: String): List<TourSpotModel>
+    fun countyFilter()
 }

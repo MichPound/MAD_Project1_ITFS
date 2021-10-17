@@ -23,6 +23,7 @@ class TourSpotController {
                 5 -> getGeneralWeather()
                 6 -> getFullWeather()
                 7 -> search()
+                8 -> tourSpots.countyFilter()
                 -0 -> println("Exiting App")
                 else -> println("Invalid Option")
             }
@@ -42,6 +43,7 @@ class TourSpotController {
         println(" 5. General Weather")
         println(" 6. Full Weather")
         println(" 7. Search")
+        println(" 8. Filter by County")
         println(" -0. Exit")
         println()
         print("Enter your option : ")
@@ -249,7 +251,7 @@ class TourSpotController {
     private fun selectSpot(): TourSpotModel? {
         listTourSpots()
         return if (tourSpots.amount() != 0) {
-            print("\nEnter Title of Tourist Spot: ")
+            print("\nEnter ID of Tourist Spot: ")
             val index = readLine()!!
             tourSpots.find(index.toLong())
         } else {
