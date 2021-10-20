@@ -65,6 +65,10 @@ class TourSpotMemStore : TourSpotStore {
         return tourSpots.find { p -> p.id == index }
     }
 
+    override fun findAll(): List<TourSpotModel> {
+        return tourSpots
+    }
+
     override fun findByTitle(title: String): TourSpotModel? {
         return tourSpots.find { p -> (p.title.lowercase()).contains(title.lowercase()) }
     }
