@@ -118,7 +118,7 @@ class TourSpotDetail : Fragment() {
             id = passId,
             title = _title.value,
             county = _county.value,
-            desc = _county.value,
+            desc = _description.value,
             lat = _lat.value,
             long = _long.value,
             contactInfo = _contactInfo.value,
