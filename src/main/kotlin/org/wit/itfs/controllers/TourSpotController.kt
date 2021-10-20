@@ -82,13 +82,13 @@ class TourSpotController {
         }
         newSpot.desc = tempDesc
 
-        while (tempLat.isEmpty()) {
+        while (tempLat.isEmpty() || (tempLat.toDoubleOrNull() == null)) {
             print("Enter a Latitude : ")
             tempLat = readLine()!!
         }
         newSpot.lat = tempLat.toDouble()
 
-        while (tempLong.isEmpty()) {
+        while (tempLong.isEmpty() || (tempLong.toDoubleOrNull() == null)) {
             print("Enter a Longitude : ")
             tempLong = readLine()!!
         }
@@ -101,11 +101,11 @@ class TourSpotController {
 
         print("Enter optional opening time : ")
         val tempOpen = readLine()!!
-        if (tempOpen == "") newSpot.openTime = 00.00 else newSpot.openTime = tempOpen.toDouble()
+        if (tempOpen.toDoubleOrNull() == null) newSpot.openTime = 00.00 else newSpot.openTime = tempOpen.toDouble()
 
         print("Enter optional closing time : ")
         val tempClose = readLine()!!
-        if (tempClose == "") newSpot.closingTime = 00.00 else newSpot.closingTime = tempClose.toDouble()
+        if (tempClose.toDoubleOrNull() == null) newSpot.closingTime = 00.00 else newSpot.closingTime = tempClose.toDouble()
 
         print("Ticket/Booking needed? \n\t Y/N : ")
         val tempTicket = readLine()!!
@@ -159,7 +159,7 @@ class TourSpotController {
 
             print("Enter a new Latitude for (${spot.lat}) : ")
             val tempLat = readLine()!!
-            if (tempLat.isNotEmpty()) {
+            if (tempLat.isNotEmpty() && tempLat.toDoubleOrNull() != null) {
                 update.lat = tempLat.toDouble()
                 println("Tourist Spot Latitude updated")
             } else {
@@ -169,7 +169,7 @@ class TourSpotController {
 
             print("Enter a new Longitude for (${spot.long}) : ")
             val tempLong = readLine()!!
-            if (tempLong.isNotEmpty()) {
+            if (tempLong.isNotEmpty() && tempLong.toDoubleOrNull() != null) {
                 update.long = tempLong.toDouble()
                 println("Tourist Spot Longitude updated")
             } else {
@@ -189,7 +189,7 @@ class TourSpotController {
 
             print("Enter a new optional opening time for (${spot.openTime}) : ")
             val tempOpen = readLine()!!
-            if (tempOpen.isNotEmpty()) {
+            if (tempOpen.isNotEmpty() && tempLong.toDoubleOrNull() != null) {
                 update.openTime = tempOpen.toDouble()
                 println("Tourist Spot optional opening time updated")
             } else {
@@ -199,7 +199,7 @@ class TourSpotController {
 
             print("Enter a new optional closing time for (${spot.closingTime}) : ")
             val tempClose = readLine()!!
-            if (tempClose.isNotEmpty()) {
+            if (tempClose.isNotEmpty() && tempLong.toDoubleOrNull() != null) {
                 update.closingTime = tempClose.toDouble()
                 println("Tourist Spot optional closing time updated")
             } else {

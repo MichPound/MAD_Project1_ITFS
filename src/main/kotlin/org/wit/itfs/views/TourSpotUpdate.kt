@@ -11,6 +11,7 @@ var passId: Long = 0
 
 class TourSpotDetail : Fragment() {
 
+    // Disabling extra button on top of view.
     override val refreshable = SimpleBooleanProperty(false)
     override val creatable = SimpleBooleanProperty(false)
 
@@ -18,6 +19,7 @@ class TourSpotDetail : Fragment() {
     private val spot = tourSpots.find(passId)
 
     private val model = ViewModel()
+
     private val _title = model.bind {
         spot?.title.toProperty()
     }

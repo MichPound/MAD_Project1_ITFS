@@ -9,6 +9,7 @@ import tornadofx.*
 
 class TourSpotCreate : Fragment() {
 
+    // Disabling extra button on top of view.
     override val refreshable = SimpleBooleanProperty(false)
     override val creatable = SimpleBooleanProperty(false)
     override val deletable = SimpleBooleanProperty(false)

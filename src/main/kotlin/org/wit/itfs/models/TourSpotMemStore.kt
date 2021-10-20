@@ -33,9 +33,11 @@ class TourSpotMemStore : TourSpotStore {
 
     override fun list() {
         tourSpots.forEach {
-            println("ID: ${it.id}, Title: ${it.title}, County: ${it.county}, Description: ${it.desc}, " +
-                    "Latitude: ${it.lat}, Longitude: ${it.long}, Contact info: ${it.contactInfo}, " +
-                    "Open Time: ${it.openTime}, Closing Time: ${it.closingTime}, Ticket:  ${it.ticket}")
+            println(
+                "ID: ${it.id}, Title: ${it.title}, County: ${it.county}, Description: ${it.desc}, " +
+                        "Latitude: ${it.lat}, Longitude: ${it.long}, Contact info: ${it.contactInfo}, " +
+                        "Open Time: ${it.openTime}, Closing Time: ${it.closingTime}, Ticket:  ${it.ticket}"
+            )
         }
     }
 
@@ -116,7 +118,7 @@ class TourSpotMemStore : TourSpotStore {
 
             val filteredList = ArrayList<TourSpotModel>()
 
-            for (i in 0 until counties.size){
+            for (i in 0 until counties.size) {
                 if (counties[i].startsWith("O")) {
                     tourSpots.forEach { spot ->
                         if ((spot.county.lowercase()).contains(counties[i].drop(3).lowercase())) {
@@ -126,9 +128,11 @@ class TourSpotMemStore : TourSpotStore {
                 }
             }
             filteredList.forEach {
-                println("ID: ${it.id}, Title: ${it.title}, County: ${it.county}, Description: ${it.desc}, " +
-                        "Latitude: ${it.lat}, Longitude: ${it.long}, Contact info: ${it.contactInfo}, " +
-                        "Open Time: ${it.openTime}, Closing Time: ${it.closingTime}, Ticket:  ${it.ticket}")
+                println(
+                    "ID: ${it.id}, Title: ${it.title}, County: ${it.county}, Description: ${it.desc}, " +
+                            "Latitude: ${it.lat}, Longitude: ${it.long}, Contact info: ${it.contactInfo}, " +
+                            "Open Time: ${it.openTime}, Closing Time: ${it.closingTime}, Ticket:  ${it.ticket}"
+                )
             }
 
             println()
@@ -137,7 +141,7 @@ class TourSpotMemStore : TourSpotStore {
             println("Enter name of county to add/remove from filtered list: ")
             tempCounty = readLine()!!
 
-            for (i in 0 until counties.size){
+            for (i in 0 until counties.size) {
                 if (counties[i].drop(3).lowercase() == (tempCounty.lowercase())) {
                     if (counties[i].startsWith("O")) {
                         counties[i] = "X${counties[i].drop(1)}"

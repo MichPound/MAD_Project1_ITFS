@@ -21,9 +21,6 @@ class WeatherMemStore : WeatherStore {
             println(e)
         }
 
-        println("THIS: $json")
-
         return Gson().fromJson(json, listType)
-
     }
 }

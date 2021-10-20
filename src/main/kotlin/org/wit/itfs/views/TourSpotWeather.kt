@@ -14,6 +14,7 @@ var weatherId: Long = 0
 
 class TourSpotWeather : Fragment() {
 
+    // Disabling extra button on top of view.
     override val savable = SimpleBooleanProperty(false)
     override val refreshable = SimpleBooleanProperty(false)
     override val deletable = SimpleBooleanProperty(false)

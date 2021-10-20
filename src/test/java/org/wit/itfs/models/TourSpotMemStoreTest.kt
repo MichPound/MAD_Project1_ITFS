@@ -33,15 +33,18 @@ internal class TourSpotMemStoreTest {
 
     @Test
     fun add() {
+        // Adding new spot and checking count increases.
         val size = testList.amount()
         testList.add(spot1)
         assertTrue(testList.amount() == size + 1)
 
+        // Clean up.
         testList.delete(spot1)
     }
 
     @Test
     fun update() {
+        // Adding new spot and checking count increases.
         testList.add(spot1)
         val foundSpot = testList.findByTitle("Spot One")
 
@@ -55,17 +58,20 @@ internal class TourSpotMemStoreTest {
             assertTrue(testList.find(foundSpot.id)?.title == "Spot Two")
         }
 
+        // Clean up.
         testList.delete(spot2)
     }
 
     @Test
     fun delete() {
+        // Adding spots checking count then deleting and checking count.
         val size = testList.amount()
         testList.add(spot1)
         testList.add(spot2)
 
         assertTrue(testList.amount() == size + 2)
 
+        // Clean up with checks.
         testList.delete(spot2)
         assertTrue(testList.amount() == size + 1)
         testList.delete(spot1)
@@ -83,31 +89,37 @@ internal class TourSpotMemStoreTest {
             assertTrue(foundSpot2.title == "Spot One")
         }
 
+        // Clean up.
         testList.delete(spot1)
     }
 
     @Test
     fun findAll() {
+        // Finding all spots and checking count matches.
         val foundSpots = testList.findAll()
         assertTrue(foundSpots.size == testList.amount())
     }
 
     @Test
     fun findByTitle() {
+        // Adding spot and using title to find it.
         testList.add(spot1)
         val foundSpot = testList.findByTitle("Spot One")
         if (foundSpot != null) {
             assertTrue(foundSpot.title == "Spot One")
         }
 
+        // Clean up.
         testList.delete(spot1)
     }
 
     @Test
     fun amount() {
+        // Adding spot and checking counts.
         val size = testList.amount()
         testList.add(spot1)
 
+        // Clean up with checks.
         assertTrue(testList.amount() == size + 1)
         testList.delete(spot1)
         assertTrue(testList.amount() == size)
@@ -115,10 +127,12 @@ internal class TourSpotMemStoreTest {
 
     @Test
     fun search() {
+        // Adding spot and searching for it.
         testList.add(spot1)
         val searchedSpots = testList.search("Spot One")
         assertTrue(searchedSpots[0].title == "Spot One")
 
+        // Clean up.
         testList.delete(spot1)
     }
 }

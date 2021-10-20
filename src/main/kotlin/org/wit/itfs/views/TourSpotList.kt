@@ -11,6 +11,7 @@ class TourSpotList : Fragment() {
     private val tableContent = test.findAll()
     private val data = tableContent.observable()
 
+    // Disabling extra button on top of view.
     override val savable = SimpleBooleanProperty(false)
     override val refreshable = SimpleBooleanProperty(false)
     override val deletable = SimpleBooleanProperty(false)
