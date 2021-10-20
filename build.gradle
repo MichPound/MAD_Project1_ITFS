@@ -1,6 +1,8 @@
 plugins {
     id 'org.jetbrains.kotlin.jvm' version '1.5.10'
     id 'java'
+    id 'application'
+    id 'org.openjfx.javafxplugin' version '0.0.8'
 }
 
 group 'org.wit.itfs'
@@ -17,9 +19,13 @@ dependencies {
     testRuntimeOnly 'org.junit.jupiter:junit-jupiter-engine:5.7.0'
     implementation "com.google.code.gson:gson:2.8.5"
     implementation 'com.fasterxml.jackson.dataformat:jackson-dataformat-xml:2.10.1'
+    implementation 'no.tornado:tornadofx:1.7.20'
 }
 
-
+javafx{
+    version = "11.0.2"
+    modules = ['javafx.controls', 'javafx.graphics']
+}
 
 test {
     useJUnitPlatform()

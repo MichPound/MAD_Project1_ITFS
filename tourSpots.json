@@ -12,18 +12,6 @@
     "ticket": true
   },
   {
-    "id": 1906064613455140352,
-    "title": "2",
-    "county": "Cork",
-    "desc": "2",
-    "lat": 2.0,
-    "long": 2.0,
-    "contactInfo": "2",
-    "openTime": 2.0,
-    "closingTime": 2.0,
-    "ticket": false
-  },
-  {
     "id": -4197875126974084265,
     "title": "Tramore Beach",
     "county": "Waterford",
@@ -46,5 +34,17 @@
     "openTime": 0.0,
     "closingTime": 0.0,
     "ticket": false
+  },
+  {
+    "id": -5434916573290398303,
+    "title": "Kilkenny Castle",
+    "county": "Kilkenny",
+    "desc": "Kilkenny",
+    "lat": 54.12,
+    "long": 7.24,
+    "contactInfo": "N/A",
+    "openTime": 0.0,
+    "closingTime": 0.0,
+    "ticket": true
   }
 ]
